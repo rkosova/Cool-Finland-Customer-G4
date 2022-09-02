@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Register</title>
+</head>
+<body>
+	{% if error %}
+			<p>Error: An account with that e-mail already exists</p><br>
+	{% endif %}
+
+	<form method="POST" action="/register">
+		<input type="text" placeholder="E-mail" name="email">
+		<input type="password" placeholder="Password" name="password">
+		<input type="text" placeholder="Company Name" name="cname">
+		<input type="text" placeholder="Company Rep. Name" name="rep_n">
+		<input type="text" placeholder="Company Rep. Last Name" name="rep_ln">
+		<input type="text" placeholder="Company Rep. Phone Number" name="rep_pn">
+		<input type="submit">
+	</form>
+</body>
+</html>
