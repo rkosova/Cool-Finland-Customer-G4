@@ -1,5 +1,6 @@
 # compiled files
-__pycache__/
+/__pycache__
+/quickstart_flask/__pycache__
 
 # venv
 /cfcg4
