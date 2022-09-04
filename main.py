@@ -53,9 +53,12 @@ def login():
     if request.method == "POST":
         username = request.form.get('email')
         password = request.form.get('password')
-        logged = not login_val(username, password)
-        print(logged)
-        return render_template("login.html.jinja", error=logged)
+        logged = login_val(username, password)
+
+        if logged:
+            return render_template("index.html")
+        else:
+            return render_template("login.html.jinja", error=not logged)
     else:
         return render_template("login.html.jinja", error=None)
 
