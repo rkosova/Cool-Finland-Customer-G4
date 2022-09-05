@@ -1,8 +1,10 @@
 from flask import Flask, request, redirect, render_template
 import sqlite3
+from passlib.hash import bcrypt
 
 
 app = Flask(__name__, static_url_path='/static')
+
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -16,9 +18,11 @@ def login_val(username, password):
     users = conn.execute('select * from "users"').fetchall()
     conn.close()
 
+    hasher = bcrypt.using(rounds=13)
+
     for user in users:
         if user["email"] == username:
-            if user["password"] == password:
+            if hasher.verify(password, user["password"]):
                 return True
 
     return False
@@ -52,8 +56,8 @@ def admin():
 def login():
     if request.method == "POST":
         username = request.form.get('email')
-        password = request.form.get('password')
-        logged = login_val(username, password)
+        h_passw = request.form.get('password')
+        logged = login_val(username, h_passw)
 
         if logged:
             return render_template("index.html")
@@ -73,11 +77,15 @@ def register():
         rep_lname = request.form.get('rep_ln')
         rep_pnum = request.form.get('rep_pn')
 
+        hasher = bcrypt.using(rounds=13)
+        h_passw = hasher.hash(passw)
+
+
         conn = get_db_connection()
         cur = conn.cursor()
         valid_email = not email_in(email, conn)
         if valid_email:
-            conn.execute('insert into "users" (email, password, comp_name, rep_name, rep_lname, rep_pnumber) values (?, ?, ?, ?, ?, ?)',(email, passw, c_name, rep_name, rep_lname, rep_pnum))
+            conn.execute('insert into "users" (email, password, comp_name, rep_name, rep_lname, rep_pnumber) values (?, ?, ?, ?, ?, ?)',(email, h_passw, c_name, rep_name, rep_lname, rep_pnum))
             conn.commit()
             conn.close()
             return redirect("/")
