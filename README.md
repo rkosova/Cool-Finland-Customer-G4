@@ -16,8 +16,12 @@ In order to use and interact with the database it has to be initialize. To initi
 FOLLOW THIS TO INITIALIZE PROJECT
 
 python -m pip install flask
+
 python -m pip install passlib
+
 python -m pip install bcrypt
+
 $env:FLASK_APP="main.py"
+
 python -m flask run
 
