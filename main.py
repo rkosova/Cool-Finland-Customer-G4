@@ -94,3 +94,38 @@ def register():
             return render_template("register.html.jinja", error = not valid_email)
     else:
         return render_template("register.html.jinja")
+
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        email = request.form.get('email')
+        passw = request.form.get('password')
+        c_name = request.form.get('cname')
+        rep_name = request.form.get('rep_n')
+        rep_lname = request.form.get('rep_ln')
+        rep_pnum = request.form.get('rep_pn')
+
+        hasher = bcrypt.using(rounds=13)
+        h_passw = hasher.hash(passw)
+
+
+        conn = get_db_connection()
+        cur = conn.cursor()
+        valid_email = not email_in(email, conn)
+        if valid_email:
+            conn.execute('insert into "users" (email, password, comp_name, rep_name, rep_lname, rep_pnumber) values (?, ?, ?, ?, ?, ?)',(email, h_passw, c_name, rep_name, rep_lname, rep_pnum))
+            conn.commit()
+            conn.close()
+            return redirect("/")
+        else:
+            conn.close()      
+            return render_template("register.html.jinja", error = not valid_email)
+    else:
+        return render_template("register.html.jinja")
+
+
+@app.route("/schedule")
+def index():
+    return render_template("schedule.html")
