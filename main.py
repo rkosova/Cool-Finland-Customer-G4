@@ -1,14 +1,22 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from forms import RegistrationForm, LoginForm
-from flask_login import login_user, current_user, logout_user, login_required, UserMixin
+from flask_login import login_user, current_user, logout_user, login_required, UserMixin, LoginManager
+from datetime import datetime
+from sqlalchemy import SQLAlchemy
 import sqlite3
-from passlib.hash import bcrypt
+from passlib.hash import bcrypt, Bcrypt
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__, static_url_path='/static')
 
 #secret key is for app security to protect from attacks
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+login_manager.login_message_category = 'info'
 
 @login_manager.user_loader
 def load_user(user_id):
