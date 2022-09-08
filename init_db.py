@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import sqlite3
+from main import User
 
 connection = sqlite3.connect('site.db')
 

@@ -9,12 +9,14 @@ from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__, static_url_path='/static')
 
+
 #secret key is for app security to protect from attacks
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 #Creating an instance of database
 db = SQLAlchemy(app)
+db.app = app
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -26,17 +28,15 @@ login_manager.login_message_category = 'info'
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-#Creating a class - this is used instead of regular sql code to create a db
-
 class User(db.Model, UserMixin):
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-
-    def __repr__(self):
-        return f"User('{self.email}', '{self.image_file}')"
-
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 
 @app.route("/")
