@@ -77,3 +77,19 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.logintitle {
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-control-label{
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-control{
+  border: 1px solid black;
+  color: black;
+  padding: 5px 5px;
+}
