@@ -4,7 +4,7 @@ import sqlite3
 
 app = Flask(__name__, static_url_path='/static')
 
-# @app.route("/hello/<name>")
+#@app.route("/")
 # @app.route("/hello/")
 # def hello(name=None):
 # 	return render_template("hello.html.jinja", name=name)
