@@ -26,7 +26,7 @@ login_manager.login_message_category = 'info'
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-#Creating class User to hold information in the db
+#Creating a class - this is used instead of regular sql code to create a db
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
