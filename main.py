@@ -1,16 +1,17 @@
-from flask import Flask, request, redirect, render_template
+from flask import Flask, render_template, url_for, flash, redirect, request
 import sqlite3
 from passlib.hash import bcrypt
-
+from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__, static_url_path='/static')
 
+#secret key is for app security to protect from attacks
+app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row
     return conn
-
 
 def login_val(username, password):
     conn = get_db_connection()
@@ -38,59 +39,38 @@ def email_in(email, conn):
     return False
 
 
+
 @app.route("/")
-def index():
-    return render_template("index.html")
+@app.route("/home")
+def home():
+    return render_template('index.html')
 
 
-@app.route("/admin")
-def admin():
-    conn = get_db_connection()
-    cur = conn.cursor()
-    users = conn.execute('select * from "users"').fetchall()
-    conn.close()
-    return render_template("admin.html.jinja", users=users)
+@app.route("/about")
+def about():
+    return render_template('about.html', title='About')
 
 
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        username = request.form.get('email')
-        h_passw = request.form.get('password')
-        logged = login_val(username, h_passw)
-
-        if logged:
-            return render_template("index.html")
-        else:
-            return render_template("login.html.jinja", error=not logged)
-    else:
-        return render_template("login.html.jinja", error=None)
-
-
-@app.route("/register", methods=["GET", "POST"])
+@app.route("/register", methods=['GET', 'POST'])
 def register():
-    if request.method == "POST":
-        email = request.form.get('email')
-        passw = request.form.get('password')
-        c_name = request.form.get('cname')
-        rep_name = request.form.get('rep_n')
-        rep_lname = request.form.get('rep_ln')
-        rep_pnum = request.form.get('rep_pn')
-
-        hasher = bcrypt.using(rounds=13)
-        h_passw = hasher.hash(passw)
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.email.data}!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', title='Register', form=form)
 
 
-        conn = get_db_connection()
-        cur = conn.cursor()
-        valid_email = not email_in(email, conn)
-        if valid_email:
-            conn.execute('insert into "users" (email, password, comp_name, rep_name, rep_lname, rep_pnumber) values (?, ?, ?, ?, ?, ?)',(email, h_passw, c_name, rep_name, rep_lname, rep_pnum))
-            conn.commit()
-            conn.close()
-            return redirect("/")
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+            flash('You have been logged in!', 'success')
+            return redirect(url_for('home'))
         else:
-            conn.close()      
-            return render_template("register.html.jinja", error = not valid_email)
-    else:
-        return render_template("register.html.jinja")
+            flash('Login Unsuccessful. Please check username and password', 'danger')
+    return render_template('login.html', title='Login', form=form)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
