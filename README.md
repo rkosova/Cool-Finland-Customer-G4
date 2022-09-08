@@ -46,3 +46,10 @@ Create a folder static in your project and create folders css and script there
 
 CSS and Javascript pages are located there.
 
+ADDITIONAL
+
+
+python -m pip install flask-wtf
+
+python -m pip install email_validator
+
