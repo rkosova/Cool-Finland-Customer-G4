@@ -2,16 +2,19 @@ from flask import Flask, render_template, url_for, flash, redirect, request
 from forms import RegistrationForm, LoginForm
 from flask_login import login_user, current_user, logout_user, login_required, UserMixin, LoginManager
 from datetime import datetime
-from sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 import sqlite3
-from passlib.hash import bcrypt, Bcrypt
+from passlib.hash import bcrypt
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__, static_url_path='/static')
 
 #secret key is for app security to protect from attacks
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+#initializing classes SQLAlchemy and Bcrypt
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
@@ -32,36 +35,6 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.email}', '{self.image_file}')"
-
-def get_db_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
-
-def login_val(username, password):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    users = conn.execute('select * from "users"').fetchall()
-    conn.close()
-
-    hasher = bcrypt.using(rounds=13)
-
-    for user in users:
-        if user["email"] == username:
-            if hasher.verify(password, user["password"]):
-                return True
-
-    return False
-
-
-def email_in(email, conn):
-    emails = conn.execute('select email from "users"').fetchall()
-
-    for email_ in emails:
-        if email_ == email:
-            return True
-
-    return False
 
 
 

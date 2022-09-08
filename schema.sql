@@ -6,10 +6,10 @@ create table users (
  	id integer primary key autoincrement,
  	email text not null,
  	password text not null,
- 	comp_name text not null,
- 	rep_name text not null,
- 	rep_lname text not null,
- 	rep_pnumber text not null
+ 	c_name text not null,
+ 	rep_n text not null,
+ 	rep_ln text not null,
+ 	rep_pnum text not null
 );
 
 
