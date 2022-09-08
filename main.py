@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from forms import RegistrationForm, LoginForm
-from flask_login import login_user, current_user, logout_user, login_required
+from flask_login import login_user, current_user, logout_user, login_required, UserMixin
 import sqlite3
 from passlib.hash import bcrypt
 from forms import RegistrationForm, LoginForm
@@ -9,6 +9,21 @@ app = Flask(__name__, static_url_path='/static')
 
 #secret key is for app security to protect from attacks
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    password = db.Column(db.String(60), nullable=False)
+    posts = db.relationship('Post', backref='author', lazy=True)
+
+    def __repr__(self):
+        return f"User('{self.email}', '{self.image_file}')"
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
