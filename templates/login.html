@@ -6,9 +6,10 @@
             <h3 class="welcome">Welcome to your company login</h3>
             <hr>
             <h6> Here you can login to book a reservation for your delivery, and view your reservations! <br>
-                 Use your company credentials to login, or create an account. </h6>
-        
-        
+                 Use your company credentials to login, or create an account. </h6>    
+                 <h6>
+                    Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
+                 </h6>
         </div>
         <form class = "test" method="POST" action="">
             {{ form.hidden_tag() }}
@@ -41,21 +42,18 @@
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.remember(class="form-check-input") }}
-                    {{ form.remember.label(class="form-check-label") }}
+                    {{ form.remember(class="form-check-input-login") }}
+                    {{ form.remember.label(class="form-check-label-login") }}
                 </div>
             </fieldset>
             <div>
-                {{ form.submit(class="btn btn-outline-info") }}
+                {{ form.submit(class="btn btn-outline-info-login") }}
             </div>
 
             <small>
                 <a href="#">Forgot Password?</a>
             </small>
         </form>
-        <small>
-            Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
-        </small>
         <div>
         </div>
 </div>
