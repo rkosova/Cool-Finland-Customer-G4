@@ -124,3 +124,16 @@ a.article-title:hover {
 .welcome{
   text-align: center;
 }
+.form-check-label-login{
+  padding-top: 20px;
+}
+
+input#submit.btn.btn-outline-info-login{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
