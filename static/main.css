@@ -3,13 +3,6 @@ body {
   color: #333333;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #444444;
-}
-
-.bg-steel {
-  background-color: #5f788a;
-}
 
 .site-header .navbar-nav .nav-link {
   color: #cbd5db;
@@ -31,9 +24,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
 }
 
-.article-title {
-  color: #444444;
-}
 
 a.article-title:hover {
   color: #428bca;
@@ -86,10 +76,51 @@ a.article-title:hover {
 .form-control-label{
   text-align: center;
   font-weight: bold;
+ 
 }
 
 .form-control{
   border: 1px solid black;
   color: black;
   padding: 5px 5px;
+}
+
+.content-section-login{
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 50px;
+  text-align: center;
+  display:flex;
+  justify-content: center;
+}
+
+.content-login{
+  display: inline-block;
+  padding: 50px;
+  vertical-align: middle;
+}
+
+#email.form-control.form-control-lg{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 5px, 5px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  height:10%;
+}
+
+#password.form-control.form-control-lg{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  height:10%;
+}
+.welcome{
+  text-align: center;
 }
