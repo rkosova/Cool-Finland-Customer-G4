@@ -1,11 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
+    <div class="content-section-register">
+        <div class ="content-register"> 
+            <h6>Here you can register your company. Please fill in your company's information.</h6> 
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-                <legend>Register</legend>
+                <legend>Registration</legend>
+                <hr>
                 <div>
-                    {{ form.email.label(class="form-control-label") }}
+                    {{ form.email.label(class="form-control-label-register") }}
                     {% if form.email.errors %}
                         {{ form.email(class="form-control form-control-lg is-invalid") }}
                         <div>
@@ -14,11 +17,11 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.email(class="form-control form-control-lg") }}
+                        {{ form.email(class="form-control form-control-register") }}
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.c_name.label(class="form-control-label") }}
+                    {{ form.c_name.label(class="form-control-label-register") }}
 
                     {% if form.username.errors %}
                         {{ form.username(class="form-control form-control-lg is-invalid") }}
@@ -28,11 +31,11 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.c_name(class="form-control form-control-lg") }}
+                        {{ form.c_name(class="form-control form-control-register") }}
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.rep_n.label(class="form-control-label") }}
+                    {{ form.rep_n.label(class="form-control-label-register") }}
 
                     {% if form.rep_n.errors %}
                         {{ form.rep_n(class="form-control form-control-lg is-invalid") }}
@@ -42,11 +45,11 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.rep_n(class="form-control form-control-lg") }}
+                        {{ form.rep_n(class="form-control form-control-register") }}
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.rep_ln.label(class="form-control-label") }}
+                    {{ form.rep_ln.label(class="form-control-label-register") }}
 
                     {% if form.rep_ln.errors %}
                         {{ form.rep_ln(class="form-control form-control-lg is-invalid") }}
@@ -56,11 +59,11 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.rep_ln(class="form-control form-control-lg") }}
+                        {{ form.rep_ln(class="form-control form-control-register") }}
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.rep_pnum.label(class="form-control-label") }}
+                    {{ form.rep_pnum.label(class="form-control-label-register") }}
 
                     {% if form.rep_pnum.errors %}
                         {{ form.rep_pnum(class="form-control form-control-lg is-invalid") }}
@@ -70,11 +73,11 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.rep_pnum(class="form-control form-control-lg") }}
+                        {{ form.rep_pnum(class="form-control form-control-register") }}
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.password.label(class="form-control-label") }}
+                    {{ form.password.label(class="form-control-label-register") }}
                     {% if form.password.errors %}
                         {{ form.password(class="form-control form-control-lg is-invalid") }}
                         <div>
@@ -87,7 +90,7 @@
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.confirm_password.label(class="form-control-label") }}
+                    {{ form.confirm_password.label(class="form-control-label-register") }}
                     {% if form.confirm_password.errors %}
                         {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
                         <div>
@@ -96,18 +99,18 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                        {{ form.confirm_password(class="form-control form-control-register") }}
                     {% endif %}
                 </div>
             </fieldset>
             <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+                {{ form.submit(class="btn btn-outline-info-register") }}
             </div>
         </form>
-    </div>
-    <div>
-        <small>
-            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
-        </small>
+        <div>
+            <h6>
+                Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+            </h6>
+        </div>
     </div>
 {% endblock content %}

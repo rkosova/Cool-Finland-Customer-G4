@@ -2,89 +2,17 @@ body {
   background: #fafafa;
   color: #333333;
 }
-
-
-.site-header .navbar-nav .nav-link {
-  color: #cbd5db;
-}
-
-.site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
-}
-
-.site-header .navbar-nav .nav-link.active {
-  font-weight: 500;
-}
-
-.content-section {
-  background: #ffffff;
-  padding: 10px 20px;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  margin-bottom: 20px;
-}
-
-
-a.article-title:hover {
-  color: #428bca;
-  text-decoration: none;
-}
-
-.article-content {
-  white-space: pre-line;
-}
-
-.article-img {
-  height: 65px;
-  width: 65px;
-  margin-right: 16px;
-}
-
-.article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
-}
-
-.article-metadata a:hover {
-  color: #333;
-  text-decoration: none;
-}
-
-.article-svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
-}
-
-.account-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
-}
-
-.account-heading {
-  font-size: 2.5rem;
-}
-
+/*login page css*/
 .logintitle {
   text-align: center;
   font-weight: bold;
 }
 
-.form-control-label{
+.form-control-label-lg{
   text-align: center;
   font-weight: bold;
  
 }
-
-.form-control{
-  border: 1px solid black;
-  color: black;
-  padding: 5px 5px;
-}
-
 .content-section-login{
   border: 1px solid black;
   margin: 5rem;
@@ -142,4 +70,98 @@ input#submit.btn.btn-outline-info-login{
 
 .loginimage{
   margin-top: 1rem;
+}
+/*login css ends here*/
+
+
+/*register page css*/
+.content-section-register{
+  border: 1px solid black;
+  margin: 1rem;
+  margin-left: 25rem;
+  margin-right:25rem;
+  padding: 20px;
+  text-align: center;
+  display:flex;
+  justify-content: center;
+}
+
+.content-register{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.form-control-label-register{
+  font-weight: bold;
+}
+
+#email.form-control.form-control-register{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  height:10%;
+}
+#c_name.form-control.form-control-register{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  height:10%;
+}
+#rep_n.form-control.form-control-register{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  height:10%;
+}
+#rep_ln.form-control.form-control-register{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  height:10%;
+}
+#rep_pnum.form-control.form-control-register{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  height:10%;
+}
+
+#confirm_password.form-control.form-control-register{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  height:10%;
+}
+input#submit.btn.btn-outline-info-register{
+  background-color: lightcyan;
+  border: 1px solid blue;
+  color: black;
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+  margin: 8px 6px;
+  cursor: pointer;
 }
