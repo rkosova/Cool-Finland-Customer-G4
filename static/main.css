@@ -178,29 +178,20 @@ input#submit.btn.btn-outline-info-register{
   background-color: white;
   display: flex;
   margin-left: 7%;
+  justify-content: center;
 
 }
-.col-10, h1{
+.col-10, p{
+  margin-right: 5%;
+}
+.col-10{
   display: inline;
   background-color: white;
   display: flex;
-  text-align: center;
   margin-top: 5%;
+}
+ 
   
-
-}
-  .col-10 image {
-    object-fit: contain;
-    align-self: flex-start;
-  }
-  col-5 text {
-    flex: 1 1 auto;
-  }
-  .pic {
-    width: 100%;
-    height: auto;
-    padding: 20px;
-}
 
 .logo {
 display: block;
@@ -214,10 +205,11 @@ background-image: url("https://cdn.pixabay.com/photo/2018/04/05/23/59/nature-329
 background-size:cover;
 }
 header {
-background-color: white;
+background-color: skyblue;
+
 }
 footer {
-background-color: white;
+background-color: skyblue;
 text-align: center;
 border:1px black solid;
 position: absolute;
@@ -234,10 +226,12 @@ min-height: 100vh;
 padding-bottom: 2.5rem;    /* Footer height */
 }
 body {
-  background: #fafafa;
+  background-color: azure;
   color: #333333;
-  background-image: url("https://cdn.pixabay.com/photo/2018/04/05/23/59/nature-3294632_1280.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   
+}
+.pic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
