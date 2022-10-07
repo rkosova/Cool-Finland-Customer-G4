@@ -27,28 +27,28 @@ body {
 
 .content-login{
   display: inline-block;
-  padding: 50px;
+  padding: 3rem;
   vertical-align: middle;
 }
 
 #email.form-control.form-control-lg{
   background-color: lightcyan;
-  border: 1px solid blue;
+  border: 0.05rem solid blue;
   color: black;
-  padding: 5px, 5px;
+  padding: 1rem, 1rem;
   text-decoration: none;
-  margin: 4px 2px;
+  margin: 0.5rem 0.1rem;
   cursor: pointer;
   height:10%;
 }
 
 #password.form-control.form-control-lg{
   background-color: lightcyan;
-  border: 1px solid blue;
+  border: 0.05rem solid blue;
   color: black;
-  padding: 5px 5px;
+  padding: 0.5rem, 0.5rem;
   text-decoration: none;
-  margin: 4px 2px;
+  margin: 0.5rem 0.1rem;
   cursor: pointer;
   height:10%;
 }
@@ -56,16 +56,16 @@ body {
   text-align: center;
 }
 .form-check-label-login{
-  padding-top: 20px;
+  padding-top: 0.5rem;
 }
 
 input#submit.btn.btn-outline-info-login{
   background-color: lightcyan;
-  border: 1px solid blue;
+  border: 0.05rem solid blue;
   color: black;
-  padding: 10px 10px 10px 10px;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   text-decoration: none;
-  margin: 8px 6px;
+  margin: 1rem 0.2rem;
   cursor: pointer;
 }
 
@@ -237,4 +237,5 @@ body {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 15%;
 }
