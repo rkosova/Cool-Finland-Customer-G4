@@ -15,11 +15,11 @@ body {
 }
 .content-section-login{
   background-color: white;
-  border: 1px solid black;
+  border: 0.05rem solid black;
   margin: 5rem;
   margin-left: 20rem;
   margin-right:20rem;
-  padding: 50px;
+  padding: 3rem;
   text-align: center;
   display:flex;
   justify-content: center;
@@ -171,6 +171,9 @@ input#submit.btn.btn-outline-info-register{
 .headbar{
   border: 1px solid black;
 
+}
+.headbar, ul {
+  padding-right: 10%;
 }
 .col-10{
   border: 1px solid black;
