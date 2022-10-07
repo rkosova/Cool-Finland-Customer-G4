@@ -182,6 +182,7 @@ input#submit.btn.btn-outline-info-register{
   display: flex;
   margin-left: 7%;
   justify-content: center;
+  text-align: center;
 
 }
 .col-10, p{
@@ -192,10 +193,9 @@ input#submit.btn.btn-outline-info-register{
   background-color: white;
   display: flex;
   margin-top: 5%;
+  padding: 50px;
 }
  
-  
-
 .logo {
 display: block;
 margin-left: auto;
@@ -234,7 +234,7 @@ body {
   
 }
 .pic {
-  display: block;
+  display: flex;
   margin-left: auto;
   margin-right: auto;
 }
